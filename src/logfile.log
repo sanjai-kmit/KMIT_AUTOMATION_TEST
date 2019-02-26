@@ -1,0 +1,5 @@
+26-02-2019 18:18:07 INFO [Test_Base]: Data Base Connection of EComm: Connected
+26-02-2019 18:18:11 INFO [Test_Base]: Driver: ChromeDriver
+26-02-2019 18:18:13 INFO [Test_Base]: Driver successfully got open
+26-02-2019 18:18:23 INFO [Test_Base]: Testing URL: http://192.168.168.14:871/#/
+26-02-2019 18:18:24 INFO [Test_Base]: Driver closed successfully and completed the Test.

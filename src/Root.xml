@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="KMIT_AUTOMATION">
+
+    <!--
+        Enter the value, which browser need to do the test
+            * chrome
+            * firefox
+    -->
+    <parameter name="browser_name" value="chrome" />
+
+    <!--Enter the site you want to test-->
+    <parameter name="test_site" value="erie" />
+
+    <!--Enter the site url, in below value-->
+    <parameter name="base_url" value="http://192.168.168.14:871/#/"/>
+
+    <!--Enter to use as a new user or existing in the below value (value="new" / "exist")-->
+    <parameter name="user" value="exist"/>
+
+    <!--Enter user name and password if above user value=exist-->
+    <parameter name="userName" value="sanjaim@kmitsolutions.com"/>
+    <parameter name="password" value="123456"/>
+
+    <!--
+    *
+    *
+    *For Data Base Only
+    *
+    *
+    -->
+
+    <!--
+    * for E-comm DB
+    *
+    -->
+
+    <parameter name="E_comm_server" value="192.168.168.14" />
+    <parameter name="E_comm_port" value="1435" />
+    <parameter name="E_comm_data_base_name" value="FPRERIEEcommLiveFeb" />
+    <parameter name="E_comm_userName" value="sa" />
+    <parameter name="E_comm_password" value="kmit123$" />
+
+    <test name="E_Comm Test">
+        <packages>
+            <package name="tests" />
+        </packages>
+    </test>
+</suite>
