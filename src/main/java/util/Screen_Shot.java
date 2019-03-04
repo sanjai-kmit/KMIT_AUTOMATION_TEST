@@ -18,7 +18,11 @@ public class Screen_Shot {
         File file = screenshot.getScreenshotAs(OutputType.FILE);
 
         String directory = new File("src\\failure_ScreenShots").getAbsolutePath();
-        System.out.println("directory: " + directory);
+        File path = new File(directory);
+
+        if (!path.exists()){
+            new File(directory).mkdirs();
+        }
 
         try {
             FileUtils.copyFile(file, new File("src\\failure_ScreenShots" + "\\" + name + ".png"));
@@ -28,3 +32,4 @@ public class Screen_Shot {
     }
 
 }
+
