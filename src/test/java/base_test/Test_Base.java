@@ -6,10 +6,9 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Parameters;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
+import util.Screen_Shot;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -30,6 +29,7 @@ public class Test_Base extends DataBase_Connection{
     public static String emailId;
 
     public static Test_Base dataBase_connection=  new Test_Base();
+    public static Screen_Shot screen_shot = new Screen_Shot();
 
     public static Logger Log = Logger.getLogger(Test_Base.class.getName());
 
@@ -71,6 +71,16 @@ public class Test_Base extends DataBase_Connection{
         driver.quit();
         Log.info("Driver closed successfully and completed the Test.");
     }
+
+
+    @AfterMethod
+    public void fail_screenshot(ITestResult result){
+        if (ITestResult.FAILURE == result.getStatus()){
+            String methodName = result.getName();
+            screen_shot.takeScreenShot(driver, methodName + "-" + email_id());
+        }
+    }
+
 
 
     /*select browser functionality*/
