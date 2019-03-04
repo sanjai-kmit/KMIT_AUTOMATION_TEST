@@ -23,11 +23,7 @@ public class Email_Config {
     public static MimeMessage message;
     public static Session session;
 
-    org.apache.log4j.Logger Log = Logger.getLogger(Email_Config.class.getName());
-
     public void send_email(String site, String url){
-
-        DOMConfigurator.configure("src\\log4j.xml");
 
         // Create object of Property file
         Properties prop = new Properties();
@@ -82,9 +78,9 @@ public class Email_Config {
             Transport transport = session.getTransport("smtp");
             transport.connect("smtp.gmail.com", "sannila4369@gmail.com", "sannila@1");
             transport.sendMessage(message, message.getAllRecipients());
-            Log.info("Email message sent with attached log file: Sucessfully");
+
         } catch (MessagingException m){
-            Log.error("Email messag sent with attached log file: Failed with Exception: \n" + m.getMessage());
+            System.out.println(m.getMessage());
         }
     }
 

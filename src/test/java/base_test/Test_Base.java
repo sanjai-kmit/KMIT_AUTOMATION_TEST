@@ -13,6 +13,8 @@ import util.Screen_Shot;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Sanjai on 02/26/2019.
@@ -31,7 +33,12 @@ public class Test_Base extends DataBase_Connection{
     public static Test_Base dataBase_connection=  new Test_Base();
     public static Screen_Shot screen_shot = new Screen_Shot();
 
+    public static ResourceBundle element;
+    public static ResourceBundle property;
+
     public static Logger Log = Logger.getLogger(Test_Base.class.getName());
+
+    public static Email_Config email_config = new Email_Config();
 
 
 
@@ -48,12 +55,16 @@ public class Test_Base extends DataBase_Connection{
             Log.error("Exception on data base connection on open: " + e.getMessage());
         }
 
+        element = ResourceBundle.getBundle(test_site.toUpperCase() + "\\" + test_site.toLowerCase() + "_elements");
+        property = ResourceBundle.getBundle(test_site.toUpperCase() + "\\" + test_site.toLowerCase() + "_property");
+
 
         this.base_url = base_url;
-        this.test_site = test_site;
+        this.test_site = test_site.toLowerCase();
         emailId = email_id() + "automatedemail@kmitsolutions.com";
 
         select_browser(browser_name);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         Log.info("Driver successfully got open");
 
         driver.get(base_url);
@@ -68,10 +79,12 @@ public class Test_Base extends DataBase_Connection{
         } catch (Exception e){
             Log.error("Exception on data base connection on close: " + e.getMessage());
         }
-        Email_Config email_config = new Email_Config();
-        email_config.send_email(test_site, base_url);
+
         driver.quit();
         Log.info("Driver closed successfully and completed the Test.");
+
+        email_config.send_email(test_site, base_url);
+        Log.info("Email message sent with attached log file: Successfully");
     }
 
 
