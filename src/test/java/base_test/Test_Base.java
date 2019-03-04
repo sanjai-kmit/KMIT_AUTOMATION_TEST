@@ -8,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import util.Email_Config;
 import util.Screen_Shot;
-
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -68,6 +68,8 @@ public class Test_Base extends DataBase_Connection{
         } catch (Exception e){
             Log.error("Exception on data base connection on close: " + e.getMessage());
         }
+        Email_Config email_config = new Email_Config();
+        email_config.send_email(test_site, base_url);
         driver.quit();
         Log.info("Driver closed successfully and completed the Test.");
     }
