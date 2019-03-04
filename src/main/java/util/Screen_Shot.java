@@ -21,7 +21,7 @@ public class Screen_Shot {
         System.out.println("directory: " + directory);
 
         try {
-            FileUtils.copyFile(file, new File(directory + "\\" + name + ".png"));
+            FileUtils.copyFile(file, new File("src\\failure_ScreenShots" + "\\" + name + ".png"));
         } catch (Exception e){
             System.out.println("Exception on Screenshot Method: " + e.getMessage());
         }
