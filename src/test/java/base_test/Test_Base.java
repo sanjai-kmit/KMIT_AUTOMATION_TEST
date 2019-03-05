@@ -46,7 +46,7 @@ public class Test_Base extends DataBase_Connection{
 
 
     @Parameters({"browser_name", "test_site", "base_url", "E_comm_server", "E_comm_port", "E_comm_data_base_name", "E_comm_userName", "E_comm_password"})
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void open_driver(String browser_name, String test_site, String base_url, String E_comm_server, String E_comm_port, String E_comm_data_base_name, String E_comm_userName, String E_comm_password){
 
         DOMConfigurator.configure("src\\log4j.xml");
@@ -75,7 +75,7 @@ public class Test_Base extends DataBase_Connection{
         Log.info("Testing URL: " + base_url);
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void close_driver(){
         try {
             connection.close();
