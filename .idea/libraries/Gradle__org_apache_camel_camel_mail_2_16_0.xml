@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.camel:camel-mail:2.16.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-mail/2.16.0/18b97c67215f110cb4934de33919c1dacdb1430e/camel-mail-2.16.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-mail/2.16.0/ae674d287fa48c031aca2f53824bec5b11569a1f/camel-mail-2.16.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
