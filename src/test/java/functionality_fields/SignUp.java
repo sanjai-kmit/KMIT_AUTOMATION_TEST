@@ -71,7 +71,7 @@ public class SignUp extends Test_Base {
         firstName.clear();
         firstName.sendKeys(property.getString("firstName"));
 
-        Log.info("Tested: First Name field - given value is: " + property.getString("firstName"));
+        Log.info("Tested signup page: First Name field - given value is: " + property.getString("firstName"));
     }
 
     //    for lastname
@@ -89,7 +89,7 @@ public class SignUp extends Test_Base {
         lastName.clear();
         lastName.sendKeys(property.getString("lastName"));
 
-        Log.info("Tested: Last Name field - given value is: " + property.getString("lastName"));
+        Log.info("Tested signup page: Last Name field - given value is: " + property.getString("lastName"));
     }
 
 
@@ -108,7 +108,7 @@ public class SignUp extends Test_Base {
         phoneNumber.clear();
         phoneNumber.sendKeys(property.getString("phoneNumber"));
 
-        Log.info("Tested: Phone Number field - given value is: " + property.getString("phoneNumber"));
+        Log.info("Tested signup page: Phone Number field - given value is: " + property.getString("phoneNumber"));
     }
 
 
@@ -134,7 +134,7 @@ public class SignUp extends Test_Base {
         email.clear();
         email.sendKeys(emailId);
 
-        Log.info("Tested: Email field - given value is: " + emailId);
+        Log.info("Tested signup page: Email field - given value is: " + emailId);
     }
 
     //    for address
@@ -142,7 +142,7 @@ public class SignUp extends Test_Base {
         address.clear();
         address.sendKeys(property.getString("addressLine_1"));
 
-        Log.info("Tested: Address field - given value is: " + property.getString("addressLine_1"));
+        Log.info("Tested signup page: Address field - given value is: " + property.getString("addressLine_1"));
     }
 
     //    for city
@@ -150,7 +150,7 @@ public class SignUp extends Test_Base {
         city.clear();
         city.sendKeys(property.getString("city"));
 
-        Log.info("Tested: City field - given value is: " + property.getString("city"));
+        Log.info("Tested signup page: City field - given value is: " + property.getString("city"));
     }
 
     //    for zipcode
@@ -167,7 +167,7 @@ public class SignUp extends Test_Base {
         zipcode.clear();
         zipcode.sendKeys(property.getString("zipcode"));
 
-        Log.info("Tested: Zipcode field - given value is: " + property.getString("zipcode"));
+        Log.info("Tested signup page: Zipcode field - given value is: " + property.getString("zipcode"));
     }
 
 
@@ -228,10 +228,10 @@ public class SignUp extends Test_Base {
         confirmPassword.clear();
 
         password.sendKeys(property.getString("password"));
-        Log.info("Tested: Password field - given value is: " + property.getString("password"));
+        Log.info("Tested signup page: Password field - given value is: " + property.getString("password"));
 
         confirmPassword.sendKeys(property.getString("confirmPassword"));
-        Log.info("Tested: Confirm Password field - given value is: " + property.getString("confirmPassword"));
+        Log.info("Tested signup page: Confirm Password field - given value is: " + property.getString("confirmPassword"));
 
         driver.findElement(By.cssSelector(element.getString("create_btn"))).click();
 

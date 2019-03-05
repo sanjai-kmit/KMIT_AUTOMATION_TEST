@@ -13,7 +13,7 @@ public class Sign_Up_Page extends Test_Base {
 
 
 
-    @Test
+
     public void signUp()throws Exception{
         driver.navigate().to(base_url + element.getString("signup"));
         Log.info("Test Page: Signup");
@@ -31,13 +31,5 @@ public class Sign_Up_Page extends Test_Base {
             signUp.password_confirmPassword();
         }
 
-    }
-
-    @Test(dependsOnMethods = "signUp")
-    public void test_ecomm_db(){
-        //        for DB
-        Log.info("Test: Data Base");
-        E_Comm_DataBase e_comm_dataBase = new E_Comm_DataBase();
-        e_comm_dataBase.aspNetUsers();
     }
 }

@@ -31,6 +31,7 @@
     -->
 
     <!--
+    *
     * for E-comm DB
     *
     -->
@@ -42,8 +43,23 @@
     <parameter name="E_comm_password" value="kmit123$" />
 
     <test name="E_Comm Test">
-        <packages>
+        <!--
+            Enter what to be tested in below name
+            - only for sign up: name = test.sign_up
+            - only for login : name = test.sign_in
+            - for tickets with new user = test.tickets
+        -->
+        <groups>
+            <run>
+                <include name="test.signin" />
+            </run>
+        </groups>
+
+        <classes>
+            <class name="base_test.Main_Test" />
+        </classes>
+        <!--<packages>
             <package name="tests" />
-        </packages>
+        </packages>-->
     </test>
 </suite>
