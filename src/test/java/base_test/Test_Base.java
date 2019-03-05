@@ -11,8 +11,10 @@ import org.testng.annotations.*;
 import util.Email_Config;
 import util.Screen_Shot;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +31,7 @@ public class Test_Base extends DataBase_Connection{
     public static String base_url;
     public static String test_site;
     public static String emailId;
+    public static String joinDate;
 
     public static Test_Base dataBase_connection=  new Test_Base();
     public static Screen_Shot screen_shot = new Screen_Shot();
@@ -51,8 +54,8 @@ public class Test_Base extends DataBase_Connection{
         try {
             dataBase_connection.eComm_DB_Connection(E_comm_server, E_comm_port, E_comm_data_base_name, E_comm_userName, E_comm_password);
             Log.info("Data Base Connection of EComm: Connected");
-        } catch (Exception e){
-            Log.error("Exception on data base connection on open: " + e.getMessage());
+        } catch (Throwable t){
+            Log.error("Exception on data base connection on open: " + t.getMessage());
         }
 
         element = ResourceBundle.getBundle(test_site.toUpperCase() + "\\" + test_site.toLowerCase() + "_elements");
@@ -62,6 +65,7 @@ public class Test_Base extends DataBase_Connection{
         this.base_url = base_url;
         this.test_site = test_site.toLowerCase();
         emailId = email_id() + "automatedemail@kmitsolutions.com";
+        joinDate = getJoinDate();
 
         select_browser(browser_name);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -76,8 +80,8 @@ public class Test_Base extends DataBase_Connection{
         try {
             connection.close();
             Log.info("Data Base Connection of EComm: Disconnected");
-        } catch (Exception e){
-            Log.error("Exception on data base connection on close: " + e.getMessage());
+        } catch (Throwable t){
+            Log.error("Exception on data base connection on close: " + t.getMessage());
         }
 
         driver.quit();
@@ -119,6 +123,12 @@ public class Test_Base extends DataBase_Connection{
         DateTimeFormatter date_time = DateTimeFormatter.ofPattern("yyyyMMMdd_HH_mm_ss");
         LocalDateTime localDateTime = LocalDateTime.now();
         return date_time.format(localDateTime);
+    }
+
+    public String getJoinDate(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd 00:00:00.0");
+        Date date = new Date();
+        return format.format(date);
     }
 
 
