@@ -32,6 +32,8 @@ public class Test_Base extends DataBase_Connection{
     public static String test_site;
     public static String emailId;
     public static String joinDate;
+    public static String user;
+    public static String exist_user;
 
     public static Test_Base dataBase_connection=  new Test_Base();
     public static Screen_Shot screen_shot = new Screen_Shot();
@@ -45,9 +47,9 @@ public class Test_Base extends DataBase_Connection{
 
 
 
-    @Parameters({"browser_name", "test_site", "base_url", "E_comm_server", "E_comm_port", "E_comm_data_base_name", "E_comm_userName", "E_comm_password"})
+    @Parameters({"browser_name", "test_site", "base_url", "E_comm_server", "E_comm_port", "E_comm_data_base_name", "E_comm_userName", "E_comm_password", "user", "userName"})
     @BeforeSuite(alwaysRun = true)
-    public void open_driver(String browser_name, String test_site, String base_url, String E_comm_server, String E_comm_port, String E_comm_data_base_name, String E_comm_userName, String E_comm_password){
+    public void open_driver(String browser_name, String test_site, String base_url, String E_comm_server, String E_comm_port, String E_comm_data_base_name, String E_comm_userName, String E_comm_password, String user, String userName){
 
         DOMConfigurator.configure("src\\log4j.xml");
 
@@ -65,6 +67,8 @@ public class Test_Base extends DataBase_Connection{
         this.base_url = base_url;
         this.test_site = test_site.toLowerCase();
         emailId = email_id() + "automatedemail@kmitsolutions.com";
+        exist_user = userName;
+        this.user = user;
         joinDate = getJoinDate();
 
         select_browser(browser_name);

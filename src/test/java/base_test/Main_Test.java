@@ -3,6 +3,7 @@ package base_test;
 import functionality_fields.SignIn;
 import org.testng.annotations.Test;
 import test_DB.E_Comm_DataBase;
+import tests.Membership_Test;
 import tests.Sign_In_Page;
 import tests.Sign_Up_Page;
 
@@ -30,5 +31,19 @@ public class Main_Test extends Test_Base{
     public void test_SignIn(String userName, String password) throws Exception{
         Sign_In_Page signInPage = new Sign_In_Page();
         signInPage.signin(userName, password);
+    }
+
+    @Test(groups = "test.membership", parameters = {"userName", "password", "user", "membership"})
+    public void test_Membership(String userName, String password, String user, String membership)throws Exception{
+
+        if (user.equals("new")){
+            test_SignUp();
+            test_aspNetUsers();
+        } else if (user.equals("exist")){
+            test_SignIn(userName, password);
+        }
+
+        Membership_Test membership_test = new Membership_Test();
+        membership_test.membership(membership);
     }
 }

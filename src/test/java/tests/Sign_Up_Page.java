@@ -15,8 +15,9 @@ public class Sign_Up_Page extends Test_Base {
 
 
     public void signUp()throws Exception{
-        driver.navigate().to(base_url + element.getString("signup"));
         Log.info("Test Page: Signup");
+        driver.navigate().to(base_url + element.getString("signup"));
+        Log.info("Page navigated to " + driver.getCurrentUrl());
         SignUp signUp = new SignUp(driver);
 
         Log.info("Test Fields: Signup fields");

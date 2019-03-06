@@ -76,4 +76,27 @@ public class E_Comm_DataBase extends Test_Base {
             Log.error("Data Base Exception on : " + qry_select + " with exception: " + t.getMessage());
         }
     }
+
+    public String customerTypeCode(){
+        String qry_select = null;
+        if (user.equals("new")){
+            qry_select = "SELECT * FROM AspNetUsers WHERE UserName = '" + emailId + "'";
+        } else if (user.equals("exist")){
+            qry_select = "SELECT * FROM AspNetUsers WHERE UserName = '" + exist_user + "'";
+        }
+//        Log.info("Data Base Querys: " + qry_select);
+
+        String customerTypeCode = null;
+
+        try {
+            resultSet = statement.executeQuery(qry_select);
+            while (resultSet.next()){
+                customerTypeCode = resultSet.getString("CustomerTypeCode");
+            }
+        }catch (Throwable t){
+            Log.error(t.getMessage());
+        }
+
+        return customerTypeCode;
+    }
 }
