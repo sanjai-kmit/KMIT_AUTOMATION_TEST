@@ -22,6 +22,9 @@
     <parameter name="userName" value="sanjaim@kmitsolutions.com"/>
     <parameter name="password" value="123456"/>
 
+    <!--Enter only for membership testing, value = "new",  value = "gift" or value = "renew" (give exact value given here)-->
+    <parameter name="membership" value="new" />
+
     <!--
     *
     *
@@ -47,11 +50,12 @@
             Enter what to be tested in below name
             - only for sign up: name = test.sign_up
             - only for login : name = test.sign_in
-            - for tickets with new user = test.tickets
+            - for tickets: name = test.tickets
+            - for membership: name = test.membership
         -->
         <groups>
             <run>
-                <include name="test.signin" />
+                <include name="test.membership" />
             </run>
         </groups>
 
