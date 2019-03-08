@@ -34,6 +34,7 @@ public class Test_Base extends DataBase_Connection{
     public static String joinDate;
     public static String user;
     public static String exist_user;
+    public static String passTypeCode;
 
     public static Test_Base dataBase_connection=  new Test_Base();
     public static Screen_Shot screen_shot = new Screen_Shot();

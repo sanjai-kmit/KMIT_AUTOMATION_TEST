@@ -1,7 +1,9 @@
 package functionality_fields;
 
 import base_test.Test_Base;
+import membership_pages.Family;
 import membership_pages.FamilyPlus;
+import org.openqa.selenium.By;
 import test_DB.E_Comm_DataBase;
 
 import java.util.ArrayList;
@@ -25,34 +27,38 @@ public class Membership_Function extends Test_Base {
             Log.info("The User: " + exist_user + " is already a Member. Kindly get Non-Member user for testing.");
         } else if (e_comm_dataBase.customerTypeCode().equals("RegularCustomers")) {
             if (test_site.equals("erie")){
-                System.out.println("This is for erie membership");
                 Log.info("Test: ERIE Membership");
 
-                erie_membership_list();
+                passTypeCode = erie_membership_list();
 
                 if ((membership.toLowerCase()).equals("new")){
 
-                    driver.navigate().to(base_url + "Membership/New/" + erie_membership_list());
-                    Log.info("Selected NEW Membership to test: " + erie_membership_list());
+                    driver.navigate().to(base_url + "Membership/New/" + passTypeCode);
+                    Log.info("Selected NEW Membership to test: " + passTypeCode);
                     Log.info("Page Navigated to : " + driver.getCurrentUrl());
 
-                    if (erie_membership_list().equals("FamilyPlus")){
+                    if (passTypeCode.equals("FamilyPlus")){
                         FamilyPlus familyPlus = new FamilyPlus();
                         familyPlus.familyPlus_New();
+                    } else if (passTypeCode.equals("Family")){
+                        Family family = new Family();
+                        family.family_new();
                     }
+
+                    driver.findElement(By.cssSelector(element.getString("buynow"))).click();
 
 
                 } else if ((membership.toLowerCase()).equals("gift")){
-                    driver.navigate().to(base_url + "Membership/Gift/" + erie_membership_list());
-                    Log.info("Selected GIFT Membership to test: " + erie_membership_list());
+                    driver.navigate().to(base_url + "Membership/Gift/" + passTypeCode);
+                    Log.info("Selected GIFT Membership to test: " + passTypeCode);
                 } else if ((membership.toLowerCase()).equals("renew")){
-                    driver.navigate().to(base_url + "Membership/Renew/" + erie_membership_list());
-                    Log.info("Selected Membership to Renew: " + erie_membership_list());
+                    driver.navigate().to(base_url + "Membership/Renew/" + passTypeCode);
+                    Log.info("Selected Membership to Renew: " + passTypeCode);
                 }
             }
 
             Shopping_Cart_Functions shopping_cart_functions = new Shopping_Cart_Functions(driver);
-            shopping_cart_functions.shoppingCart(erie_membership_list());
+            shopping_cart_functions.shoppingCart(passTypeCode);
         }
     }
 
@@ -64,15 +70,14 @@ public class Membership_Function extends Test_Base {
 
         erie_memberhips = new ArrayList<String>();
         erie_memberhips.add("FamilyPlus");
-/*        erie_memberhips.add("Family");
-        erie_memberhips.add("GrandparentPlus");
+        erie_memberhips.add("Family");
+/*        erie_memberhips.add("GrandparentPlus");
         erie_memberhips.add("Grandparent");
         erie_memberhips.add("SingleGrandparent");
         erie_memberhips.add("SingleParent");
         erie_memberhips.add("Individual");*/
 
         int test_member = random.nextInt(erie_memberhips.size());
-//        get_membership = erie_memberhips.get(test_member);
         return erie_memberhips.get(test_member);
     }
 }

@@ -29,10 +29,6 @@ public class FamilyPlus extends Test_Base {
         membershipFields.secondaryMemberName();
         membershipFields.childCount();
         membershipFields.extraCard();
-        driver.findElement(By.cssSelector(element.getString("buynow"))).click();
-
-
-
     }
 
 
