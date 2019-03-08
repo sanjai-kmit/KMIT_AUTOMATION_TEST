@@ -40,6 +40,7 @@ public class Shopping_Cart_Functions extends Test_Base {
         Log.info("itemTitle: " + itemTitle);
 
         Log.info("Qty: " + driver.findElement(By.cssSelector("div.margin-l-r-0:nth-child(3)")).getText());
+        Log.info("Extra Card Selected is: 2");
         Log.info("Price of familyPlus is: " + eCommDataBase.memberPrice(passType));
 
         double sub_total = 0.00;
