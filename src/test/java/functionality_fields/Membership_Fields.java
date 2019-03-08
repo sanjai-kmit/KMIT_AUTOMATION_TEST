@@ -33,6 +33,9 @@ public class Membership_Fields extends Test_Base {
     @FindBy(id = "extracard1")
     WebElement extracard;
 
+    @FindBy(id = "extra_qty")
+    WebElement extra_qty;
+
     @FindBy(css = ".counter-field")
     WebElement noOfChild;
 
@@ -106,6 +109,11 @@ public class Membership_Fields extends Test_Base {
         }
 
         noOfChild.sendKeys(Integer.toString(count));
+    }
+
+    public void extraCard(){
+        extracard.click();
+        extra_qty.sendKeys("2");
     }
 
 }

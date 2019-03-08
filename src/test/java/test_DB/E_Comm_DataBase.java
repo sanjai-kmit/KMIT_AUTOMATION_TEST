@@ -99,4 +99,19 @@ public class E_Comm_DataBase extends Test_Base {
 
         return customerTypeCode;
     }
+
+    public double memberPrice(String passType){
+        String qry_select = "SELECT * FROM ec_PassTypeMemberPrice WHERE KMWarePassTypeCode = '" + passType + "'";
+        double member_price = 0.00;
+        try {
+            resultSet = statement.executeQuery(qry_select);
+            while (resultSet.next()){
+                member_price = Double.parseDouble(resultSet.getString("Price"));
+            }
+        }catch (Throwable t){
+            Log.error(t.getMessage());
+        }
+
+        return member_price;
+    }
 }

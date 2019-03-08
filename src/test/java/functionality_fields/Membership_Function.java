@@ -50,6 +50,9 @@ public class Membership_Function extends Test_Base {
                     Log.info("Selected Membership to Renew: " + erie_membership_list());
                 }
             }
+
+            Shopping_Cart_Functions shopping_cart_functions = new Shopping_Cart_Functions(driver);
+            shopping_cart_functions.shoppingCart(erie_membership_list());
         }
     }
 
