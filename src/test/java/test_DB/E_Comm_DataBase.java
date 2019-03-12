@@ -19,6 +19,7 @@ public class E_Comm_DataBase extends Test_Base {
         Log.info("Data Base Query: " + qry_select);
 
         try {
+            Thread.sleep(5000);
             resultSet = statement.executeQuery(qry_select);
             while (resultSet.next()){
                 try {
