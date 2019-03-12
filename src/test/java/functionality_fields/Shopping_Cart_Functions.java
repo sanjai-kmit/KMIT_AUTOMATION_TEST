@@ -33,7 +33,7 @@ public class Shopping_Cart_Functions extends Test_Base {
 
     E_Comm_DataBase eCommDataBase = new E_Comm_DataBase();
 
-    public void shoppingCart(String passType){
+    public void shoppingCart(String passType) throws Exception{
 
         String itemTitle = driver.findElement(By.cssSelector(element.getString("itemTitle"))).getText();
 
@@ -73,5 +73,12 @@ public class Shopping_Cart_Functions extends Test_Base {
 
 
         }
+
+        driver.findElement(By.cssSelector(element.getString("checkout"))).click();
+
+        Billing_Info billingInfo = new Billing_Info();
+        billingInfo.billingInfo();
+
+        driver.findElement(By.cssSelector(element.getString("paynow"))).click();
     }
 }
