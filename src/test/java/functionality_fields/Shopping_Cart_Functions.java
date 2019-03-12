@@ -80,5 +80,8 @@ public class Shopping_Cart_Functions extends Test_Base {
         billingInfo.billingInfo();
 
         driver.findElement(By.cssSelector(element.getString("paynow"))).click();
+
+        Payment payment = new Payment(driver);
+        payment.payment();
     }
 }

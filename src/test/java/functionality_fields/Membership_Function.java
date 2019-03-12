@@ -24,7 +24,7 @@ public class Membership_Function extends Test_Base {
         E_Comm_DataBase e_comm_dataBase = new E_Comm_DataBase();
 
         if (e_comm_dataBase.customerTypeCode().equals("Member")){
-            Log.info("The User: " + exist_user + " is already a Member. Kindly get Non-Member user for testing.");
+            Log.info("The User: " + exist_user + " is already a Member. You are able to renew your current Membership.");
         } else if (e_comm_dataBase.customerTypeCode().equals("RegularCustomers")) {
             if (test_site.equals("erie")){
                 Log.info("Test: ERIE Membership");
