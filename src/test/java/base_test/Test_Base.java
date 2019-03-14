@@ -82,7 +82,7 @@ public class Test_Base extends DataBase_Connection{
         Log.info("Testing URL: " + base_url);
     }
 
-    @AfterSuite(alwaysRun = true, enabled = false)
+    @AfterSuite(alwaysRun = true, enabled = true)
     public void close_driver(){
         try {
             connection.close();

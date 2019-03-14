@@ -238,11 +238,11 @@ public class Billing_Info_Fields  extends Test_Base {
                 Log.error("Mailing Info - State field error message is not proper: " + t.getMessage());
             }
             mailingstate.sendKeys(property.getString("mailing_state"));
-            Log.info("Tested: Billing Info: State field, with value: " + property.getString("mailing_state"));
+            Log.info("Tested: Mailing Info: State field, with value: " + property.getString("mailing_state"));
         } catch (Exception e){
             Select state = new Select(mailingstate);
             state.selectByIndex(1 + random.nextInt(53));
-            Log.info("Tested: Billing Info - State Field");
+            Log.info("Tested: Mailing Info - State Field");
         }
     }
 
@@ -339,7 +339,7 @@ public class Billing_Info_Fields  extends Test_Base {
 
         mailing_phoneno.clear();
         mailing_phoneno.sendKeys(property.getString("mailing_phoneNumber"));
-        Log.info("Tested: Billing Phone Number Field, with value: " + property.getString("mailing_phoneNumber"));
+        Log.info("Tested: Mailing Phone Number Field, with value: " + property.getString("mailing_phoneNumber"));
     }
 
     public void setBillingEmailId(){

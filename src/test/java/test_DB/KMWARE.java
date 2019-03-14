@@ -9,8 +9,8 @@ import base_test.Test_Base;
 public class KMWARE extends Test_Base {
 
     public void test_KMWare()throws Exception{
-        KMWARE_Database kmware_database = new KMWARE_Database();
-        kmware_database.ec_Order();
-        kmware_database.ec_OrderAddress();
+        KMWARE_Orders kmwareOrders = new KMWARE_Orders();
+        kmwareOrders.ec_Order();
+        kmwareOrders.ec_OrderAddress();
     }
 }
