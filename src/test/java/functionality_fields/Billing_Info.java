@@ -35,5 +35,6 @@ public class Billing_Info extends Test_Base {
         billingInfoFields.setMailingEmailId();
 
 
+        driver.findElement(By.cssSelector(element.getString("paynow"))).click();
     }
 }
