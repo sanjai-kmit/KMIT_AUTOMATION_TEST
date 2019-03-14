@@ -6,10 +6,10 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 /**
- * @author Sanjai on 03/05/2019.
+ * @author Sanjai on 03/14/2019.
  * @project KMIT_AUTOMATION_TEST
  */
-public class KMWARE_Database extends Test_Base {
+public class KMWARE_Orders extends Test_Base {
 
     public void ec_Order() throws Exception{
         String qry_select = "SELECT * FROM ec_Order WHERE OrderId = '" + order_number + "'";
