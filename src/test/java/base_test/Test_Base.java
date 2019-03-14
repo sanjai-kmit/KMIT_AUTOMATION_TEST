@@ -49,22 +49,23 @@ public class Test_Base extends DataBase_Connection{
 
 
 
-    @Parameters({"browser_name", "test_site", "base_url", "E_comm_server", "E_comm_port", "E_comm_data_base_name", "E_comm_userName", "E_comm_password", "user", "userName"})
+    @Parameters({"browser_name", "test_site", "base_url",
+            "E_comm_server", "E_comm_port", "E_comm_data_base_name", "E_comm_userName", "E_comm_password",
+            "KMWARE_server", "KMWARE_port", "KMWARE_data_base_name", "KMWARE_userName", "KMWARE_password",
+            "user", "userName"})
     @BeforeSuite(alwaysRun = true)
-    public void open_driver(String browser_name, String test_site, String base_url, String E_comm_server, String E_comm_port, String E_comm_data_base_name, String E_comm_userName, String E_comm_password, String user, String userName){
+    public void open_driver(String browser_name, String test_site, String base_url,
+                            String E_comm_server, String E_comm_port, String E_comm_data_base_name, String E_comm_userName, String E_comm_password,
+                            String KMWARE_server, String KMWARE_port, String KMWARE_data_base_name, String KMWARE_userName, String KMWARE_password,
+                            String user, String userName){
 
         DOMConfigurator.configure("src\\log4j.xml");
 
-        try {
-            dataBase_connection.eComm_DB_Connection(E_comm_server, E_comm_port, E_comm_data_base_name, E_comm_userName, E_comm_password);
-            Log.info("Data Base Connection of EComm: Connected");
-        } catch (Throwable t){
-            Log.error("Exception on data base connection on open: " + t.getMessage());
-        }
+        dataBase_connection.eComm_DB_Connection(E_comm_server, E_comm_port, E_comm_data_base_name, E_comm_userName, E_comm_password);
+        dataBase_connection.kmware_DB_Connection(KMWARE_server, KMWARE_port, KMWARE_data_base_name, KMWARE_userName, KMWARE_password);
 
         element = ResourceBundle.getBundle(test_site.toUpperCase() + "\\" + test_site.toLowerCase() + "_elements");
         property = ResourceBundle.getBundle(test_site.toUpperCase() + "\\" + test_site.toLowerCase() + "_property");
-
 
         this.base_url = base_url;
         this.test_site = test_site.toLowerCase();
@@ -81,7 +82,7 @@ public class Test_Base extends DataBase_Connection{
         Log.info("Testing URL: " + base_url);
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterSuite(alwaysRun = true, enabled = false)
     public void close_driver(){
         try {
             connection.close();

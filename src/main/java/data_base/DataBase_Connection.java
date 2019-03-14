@@ -15,16 +15,36 @@ public class DataBase_Connection {
     public static Connection connection;
     public static Statement statement;
 
+    public static ResultSet kmware_resultSet;
+    public static Connection kmware_connection;
+    public static Statement kmware_statement;
+
+    String db_url;
+    String db_driver;
+
     public void eComm_DB_Connection(String server, String port, String db_name, String userName, String password){
-        String db_url = "jdbc:sqlserver://"+ server + ":" + port + ";databaseName=" + db_name;
-        String db_driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        db_url = "jdbc:sqlserver://"+ server + ":" + port + ";databaseName=" + db_name;
+        db_driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
         try {
             Class.forName(db_driver);
             connection = DriverManager.getConnection(db_url, userName, password);
             statement = connection.createStatement();
         } catch (Exception e){
-            System.out.println("Exception on Data Base Connection: " + e.getMessage());
+            System.out.println("Exception on EComm Data Base Connection: " + e.getMessage());
+        }
+    }
+
+    public void kmware_DB_Connection(String server, String port, String db_name, String userName, String password){
+        db_url = "jdbc:sqlserver://"+ server + ":" + port + ";databaseName=" + db_name;
+        db_driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+
+        try {
+            Class.forName(db_driver);
+            kmware_connection = DriverManager.getConnection(db_url, userName, password);
+            kmware_statement = kmware_connection.createStatement();
+        } catch (Exception e){
+            System.out.println("Exception on KMWARE Data Base Connection: " + e.getMessage());
         }
     }
 }

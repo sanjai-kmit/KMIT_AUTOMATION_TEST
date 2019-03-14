@@ -11,7 +11,7 @@ public class Family extends Test_Base {
 
     Membership_Fields membershipFields = new Membership_Fields(driver);
 
-    public void family_new(){
+    public void family_new() throws Exception{
         membershipFields.primaryMemberName();
         membershipFields.secondaryMemberName();
         membershipFields.childCount();

@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import test_DB.E_Comm_DataBase;
+import test_DB.KMWARE;
+import test_DB.KMWARE_Database;
 
 /**
  * @author Sanjai on 03/06/2019.
@@ -74,14 +76,16 @@ public class Shopping_Cart_Functions extends Test_Base {
 
         }
 
+        Thread.sleep(2000);
         driver.findElement(By.cssSelector(element.getString("checkout"))).click();
 
         Billing_Info billingInfo = new Billing_Info();
         billingInfo.billingInfo();
 
-        driver.findElement(By.cssSelector(element.getString("paynow"))).click();
-
         Payment payment = new Payment(driver);
         payment.payment();
+
+        KMWARE kmware = new KMWARE();
+        kmware.test_KMWare();
     }
 }

@@ -47,7 +47,8 @@ public class Membership_Fields extends Test_Base {
     }
 
 
-    public void primaryMemberName(){
+    public void primaryMemberName()throws Exception{
+        Thread.sleep(1000);
         primaryFirstName.clear();
         primaryLastName.clear();
 

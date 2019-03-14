@@ -290,7 +290,7 @@ public class Billing_Info_Fields  extends Test_Base {
         }
 
         mailing_zipcode1.clear();
-        mailing_zipcode1.sendKeys(property.getString("billing_zipcode"));
+        mailing_zipcode1.sendKeys(property.getString("mailing_zipcode"));
         Log.info("Tested: Mailing ZipCode field, with value = " + property.getString("mailing_zipcode"));
     }
 

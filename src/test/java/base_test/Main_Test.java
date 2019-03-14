@@ -1,9 +1,12 @@
 package base_test;
 
+import functionality_fields.Billing_Info;
+import functionality_fields.Payment;
 import functionality_fields.Shopping_Cart_Functions;
 import functionality_fields.SignIn;
 import org.testng.annotations.Test;
 import test_DB.E_Comm_DataBase;
+import test_DB.KMWARE_Database;
 import tests.Membership_Test;
 import tests.Sign_In_Page;
 import tests.Sign_Up_Page;
