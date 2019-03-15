@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import test_DB.E_Comm_DataBase;
 import test_DB.KMWARE;
-import test_DB.KMWARE_Database;
 
 /**
  * @author Sanjai on 03/06/2019.
@@ -37,7 +36,7 @@ public class Shopping_Cart_Functions extends Test_Base {
 
     public void shoppingCart(String passType) throws Exception{
 
-        String itemTitle = driver.findElement(By.cssSelector(element.getString("itemTitle"))).getText();
+        itemTitle = driver.findElement(By.cssSelector(element.getString("itemTitle"))).getText();
 
         Log.info("itemTitle: " + itemTitle);
 

@@ -12,5 +12,9 @@ public class KMWARE extends Test_Base {
         KMWARE_Orders kmwareOrders = new KMWARE_Orders();
         kmwareOrders.ec_Order();
         kmwareOrders.ec_OrderAddress();
+        kmwareOrders.ec_OrderSalesTransaction();
+
+        KMWARE_Membership kmwareMembership = new KMWARE_Membership();
+        kmwareMembership.mp_Membership();
     }
 }
