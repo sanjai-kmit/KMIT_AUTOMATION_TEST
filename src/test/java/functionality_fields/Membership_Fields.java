@@ -104,12 +104,13 @@ public class Membership_Fields extends Test_Base {
 
     public void childCount(){
         Random random = new Random();
-        int count = 0;
         if (test_site.equals("erie")){
-            count = random.nextInt(10);
+            childCount = random.nextInt(10);
         }
 
-        noOfChild.sendKeys(Integer.toString(count));
+        noOfChild.clear();
+        noOfChild.sendKeys(Integer.toString(childCount));
+        Log.info("Tested - No of Child selected: " + childCount);
     }
 
     public void extraCard(){

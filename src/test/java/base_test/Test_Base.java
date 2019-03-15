@@ -36,6 +36,8 @@ public class Test_Base extends DataBase_Connection{
     public static String exist_user;
     public static String passTypeCode;
     public static String order_number;
+    public static String itemTitle;
+    public static int childCount;
 
     public static Test_Base dataBase_connection=  new Test_Base();
     public static Screen_Shot screen_shot = new Screen_Shot();
