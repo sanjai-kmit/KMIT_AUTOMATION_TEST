@@ -91,4 +91,58 @@ public class KMWARE_Membership extends KMWARE_Orders{
             Log.error("[mp_MembershipCCDetail] Exception on getting details of mp_MembershipCCDetail table: " + e.getMessage());
         }
     }
+
+    public void mp_MembershipList(){
+        String qry_select = "SELECT * FROM mp_MembershipList WHERE MembershipCode = '" + membershipCode + "' AND Relationship = 'Self'";
+        Log.info("[mp_MembershipList] Query Selected for: " + qry_select);
+
+        try {
+            kmware_resultSet = kmware_statement.executeQuery(qry_select);
+
+            while (kmware_resultSet.next()){
+                try {
+                    String act_name = kmware_resultSet.getString("Name");
+                    Assert.assertEquals(act_name, property.getString("primaryFirstName"));
+                    Log.info("[mp_MembershipList] Tested Membership Primary Name: " + act_name);
+                } catch (Throwable t){
+                    Log.error("[mp_MembershipList] Exception on Membership Primary Name: " + t.getMessage());
+                }
+
+                try {
+                    String last_Name = kmware_resultSet.getString("LastName");
+                    Assert.assertEquals(last_Name, property.getString("primaryLastname"));
+                    Log.info("[mp_MembershipList] Tested Membership Primary LastName: " + last_Name);
+                } catch (Throwable t){
+                    Log.error("[mp_MembershipList] Exception on Membership Primary LastName: " + t.getMessage());
+                }
+
+                try {
+                    if (!kmware_resultSet.getString("PrimaryMember").equals("Y")){
+                        Log.error("[mp_MembershipList] PrimaryMember not set to the Self Relationship");
+                    }
+                } catch (Throwable t){
+                    Log.error("[mp_MembershipList] Exception on Membership PrimaryMember: " + t.getMessage());
+                }
+
+                try {
+                    if (kmware_resultSet.getString("Price").isEmpty()){
+                        Log.error("[mp_MembershipList] Price is not set on self member");
+                    }
+                } catch (Throwable t){
+                    Log.error("[mp_MembershipList] Exception on Membership Price: " + t.getMessage());
+                }
+            }
+        } catch (SQLException e){
+            Log.error("[mp_MembershipList] Exception on getting details of mp_MembershipList table: " + e.getMessage());
+        }
+    }
+
+    public void mp_MembershipPayment(){
+        String qry_select = "SELECT * FROM mp_MembershipPayment WHERE MembershipCode = '" + membershipCode + "'";
+        Log.info("[mp_MembershipPayment] Query Selected for: " + qry_select);
+
+        if (qry_select.isEmpty()){
+            Log.error("[mp_MembershipPayment] No records found in mp_MembershipPayment");
+        }
+    }
 }
