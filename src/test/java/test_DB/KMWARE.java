@@ -16,5 +16,6 @@ public class KMWARE extends Test_Base {
 
         KMWARE_Membership kmwareMembership = new KMWARE_Membership();
         kmwareMembership.mp_Membership();
+        kmwareMembership.mp_MembershipCCDetail();
     }
 }
