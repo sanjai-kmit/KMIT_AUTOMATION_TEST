@@ -1,8 +1,13 @@
 package functionality_fields;
 
 import base_test.Test_Base;
-import membership_pages.Family;
-import membership_pages.FamilyPlus;
+import membership_pages.erie.Family;
+import membership_pages.erie.FamilyPlus;
+import membership_pages.erie.GrandParentPlus;
+import membership_pages.erie.Grandparent;
+import membership_pages.erie.Individual;
+import membership_pages.erie.SingleGrandparent;
+import membership_pages.erie.SingleParent;
 import org.openqa.selenium.By;
 import test_DB.E_Comm_DataBase;
 
@@ -43,6 +48,21 @@ public class Membership_Function extends Test_Base {
                     } else if (passTypeCode.equals("Family")){
                         Family family = new Family();
                         family.family_new();
+                    } else if (passTypeCode.equals("GrandparentPlus")){
+                        GrandParentPlus grandParentPlus = new GrandParentPlus();
+                        grandParentPlus.grandParentPlus_new();
+                    } else if (passTypeCode.equals("Grandparent")){
+                        Grandparent grandparent = new Grandparent();
+                        grandparent.grandParent_new();
+                    } else if (passTypeCode.equals("SingleGrandparent")){
+                        SingleGrandparent singleGrandparent = new SingleGrandparent();
+                        singleGrandparent.singleGrandParent_new();
+                    } else if (passTypeCode.equals("SingleParent")){
+                        SingleParent singleParent = new SingleParent();
+                        singleParent.singleParent_new();
+                    } else if (passTypeCode.equals("Individual")){
+                        Individual individual = new Individual();
+                        individual.individual_new();
                     }
 
                     driver.findElement(By.cssSelector(element.getString("buynow"))).click();
@@ -71,11 +91,11 @@ public class Membership_Function extends Test_Base {
         erie_memberhips = new ArrayList<String>();
         erie_memberhips.add("FamilyPlus");
         erie_memberhips.add("Family");
-/*        erie_memberhips.add("GrandparentPlus");
+        erie_memberhips.add("GrandparentPlus");
         erie_memberhips.add("Grandparent");
         erie_memberhips.add("SingleGrandparent");
-        erie_memberhips.add("SingleParent");
-        erie_memberhips.add("Individual");*/
+//        erie_memberhips.add("SingleParent");
+        erie_memberhips.add("Individual");
 
         int test_member = random.nextInt(erie_memberhips.size());
         return erie_memberhips.get(test_member);
