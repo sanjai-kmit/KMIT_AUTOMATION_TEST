@@ -1,4 +1,4 @@
-package membership_pages;
+package membership_pages.erie;
 
 import base_test.Test_Base;
 import functionality_fields.Membership_Fields;
