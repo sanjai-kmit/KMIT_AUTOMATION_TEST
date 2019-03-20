@@ -37,8 +37,16 @@ public class E_Comm_DataBase extends Test_Base {
                 }
 
                 try {
-                    Assert.assertEquals(resultSet.getString("JoinDate"), joinDate);
-                    Log.info("Date Base: JoinDate - Tested");
+                    if (site_with_timeStamp.contains(test_site)){
+                        if (resultSet.getString("JoinDate").contains(getJoinDate())){
+                            Log.info("Date Base: JoinDate - Tested");
+                        } else {
+                            Log.error("Exception on JoinDate of AspNetUsers");
+                        }
+                    } else {
+                        Assert.assertEquals(resultSet.getString("JoinDate"), joinDate);
+                        Log.info("Date Base: JoinDate - Tested");
+                    }
                 } catch (Throwable t){
                     Log.error("Data Base Exception on JoinDate: with exception: " + t.getMessage());
                 }

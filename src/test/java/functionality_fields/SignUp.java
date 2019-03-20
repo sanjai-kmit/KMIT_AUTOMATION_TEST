@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -176,7 +177,10 @@ public class SignUp extends Test_Base {
 //  validation for empty field
         password.clear();
         confirmPassword.clear();
-        driver.findElement(By.cssSelector(element.getString("create_btn"))).click();
+
+        WebElement createBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(element.getString("create_btn"))));
+//        driver.findElement(By.cssSelector(element.getString("create_btn"))).click();
+        createBtn.click();
 
         try {
             Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("password_error"))).getText().toLowerCase(), property.getString("password_error").toLowerCase());

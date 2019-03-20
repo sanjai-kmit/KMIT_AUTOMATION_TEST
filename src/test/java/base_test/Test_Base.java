@@ -6,6 +6,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import util.Email_Config;
@@ -14,7 +15,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
@@ -49,7 +52,8 @@ public class Test_Base extends DataBase_Connection{
 
     public static Email_Config email_config = new Email_Config();
 
-
+    public static WebDriverWait wait;
+    public static List<String> site_with_timeStamp = new ArrayList<>();
 
     @Parameters({"browser_name", "test_site", "base_url",
             "E_comm_server", "E_comm_port", "E_comm_data_base_name", "E_comm_userName", "E_comm_password",
@@ -122,7 +126,7 @@ public class Test_Base extends DataBase_Connection{
             driver = new FirefoxDriver();
             Log.info("Driver: FireFoxDriver");
         }
-
+        wait = new WebDriverWait(driver, 20);
         driver.manage().window().maximize();
     }
 
@@ -135,7 +139,16 @@ public class Test_Base extends DataBase_Connection{
     }
 
     public String getJoinDate(){
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd 00:00:00.0");
+
+        SimpleDateFormat format;
+
+        site_with_timeStamp.add("oreo");
+
+        if (site_with_timeStamp.contains(test_site)){
+            format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        } else {
+            format = new SimpleDateFormat("yyyy-MM-dd 00:00:00.0");
+        }
         Date date = new Date();
         return format.format(date);
     }
