@@ -41,8 +41,6 @@ public class Shopping_Cart_Functions extends Test_Base {
         Log.info("itemTitle: " + itemTitle);
 
         Log.info("Qty: " + driver.findElement(By.cssSelector("div.margin-l-r-0:nth-child(3)")).getText());
-        Log.info("Extra Card Selected is: 2");
-        Log.info("Price of familyPlus is: " + eCommDataBase.memberPrice(passType));
 
         double sub_total = 0.00;
         double total = 0.00;
@@ -59,15 +57,27 @@ public class Shopping_Cart_Functions extends Test_Base {
             System.out.println("Tax: " + tax);
 
             try {
-                Assert.assertEquals((eCommDataBase.memberPrice(passType) + 10), sub_total);
-                Log.info("Tested: Shopping Card - SUB-TOTAL = "   + (eCommDataBase.memberPrice(passType) + 10));
+                if (test_site.equals("oreo")){
+                    int careGiver_total = noOf_CareGivers * 49;
+                    Assert.assertEquals((eCommDataBase.memberPrice(passType) + careGiver_total), sub_total);
+                    Log.info("Tested: Shopping Card - SUB-TOTAL = "   + (eCommDataBase.memberPrice(passType) + careGiver_total));
+                } else {
+                    Assert.assertEquals((eCommDataBase.memberPrice(passType) + 10), sub_total);
+                    Log.info("Tested: Shopping Card - SUB-TOTAL = "   + (eCommDataBase.memberPrice(passType) + 10));
+                }
             } catch (Throwable t){
                 Log.error("Test: Shopping Cart - SUB-TOTAL Amount is not matching" + t.getMessage());
             }
 
             try {
-                Assert.assertEquals((eCommDataBase.memberPrice(passType) + 10 + tax), total);
-                Log.info("Tested: Shopping Cart - TOTAL = " + (eCommDataBase.memberPrice(passType) + 10 + tax));
+                if (test_site.equals("oreo")){
+                    int careGiver_total = noOf_CareGivers * 49;
+                    Assert.assertEquals((eCommDataBase.memberPrice(passType) + careGiver_total + tax), sub_total);
+                    Log.info("Tested: Shopping Card - TOTAL = "   + (eCommDataBase.memberPrice(passType) + careGiver_total + tax));
+                } else {
+                    Assert.assertEquals((eCommDataBase.memberPrice(passType) + 10 + tax), total);
+                    Log.info("Tested: Shopping Cart - TOTAL = " + (eCommDataBase.memberPrice(passType) + 10 + tax));
+                }
             } catch (Throwable t){
                 Log.error("Test: Shopping Cart - Total Amount is not matching" + t.getMessage());
             }

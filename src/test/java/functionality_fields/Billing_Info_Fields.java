@@ -41,8 +41,14 @@ public class Billing_Info_Fields  extends Test_Base {
     @FindBy(name = "billingstate")
     WebElement billingstate;
 
+    @FindBy(css = "div.padding-r-0:nth-child(3) > div:nth-child(1) > input:nth-child(1)")
+    WebElement oreo_billingState;
+
     @FindBy(name = "billingcountry")
     WebElement billingcountry;
+
+    @FindBy(css = "div.padding-r-0:nth-child(3) > select:nth-child(2)")
+    WebElement oreo_billingCountry;
 
     @FindBy(name = "billingzipcode1")
     WebElement billingzipcode1;
@@ -71,8 +77,14 @@ public class Billing_Info_Fields  extends Test_Base {
     @FindBy(name = "mailingstate")
     WebElement mailingstate;
 
+    @FindBy(css = "div.col-md-6:nth-child(4) > div:nth-child(1) > input:nth-child(1)")
+    WebElement oreo_mailingState;
+
     @FindBy(name = "mailingCountry")
     WebElement mailingCountry;
+
+    @FindBy(css = "select.ng-pristine:nth-child(2)")
+    WebElement oreo_mailingCountry;
 
     @FindBy(name = "zipcode1")
     WebElement mailing_zipcode1;
@@ -199,23 +211,44 @@ public class Billing_Info_Fields  extends Test_Base {
     public void setBilling_state_country(){
         Random random = new Random();
 
-        Select country = new Select(billingcountry);
+        Select country;
+        if (test_site.equals("oreo")){
+            country = new Select(oreo_billingCountry);
+        } else {
+             country = new Select(billingcountry);
+        }
         country.selectByIndex(random.nextInt(33));
 //        country.selectByValue("USA");
         driver.findElement(By.cssSelector(element.getString("paynow"))).click();
 
         try {
-            billingstate.clear();
+            if (test_site.equals("oreo")){
+                oreo_billingState.clear();
+            }else {
+                billingstate.clear();
+            }
+
             driver.findElement(By.cssSelector(element.getString("paynow"))).click();
             try {
                 Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("billingState_error"))).getText(), property.getString("billingState_error"));
             } catch (Throwable t){
                 Log.error("Billing Info - State field error message is not proper: " + t.getMessage());
             }
-            billingstate.sendKeys(property.getString("billing_state"));
+            if (test_site.equals("oreo")){
+                oreo_billingState.sendKeys(property.getString("billing_state"));
+            } else {
+                billingstate.sendKeys(property.getString("billing_state"));
+            }
+
             Log.info("Tested: Billing Info: State field, with value: " + property.getString("billing_state"));
         } catch (Exception e){
-            Select state = new Select(billingstate);
+            Select state;
+            if (test_site.equals("oreo")){
+                state = new Select(oreo_billingState);
+            } else {
+                state = new Select(billingstate);
+            }
+
             state.selectByIndex(1 + random.nextInt(53));
             Log.info("Tested: Billing Info - State Field");
         }
@@ -224,23 +257,45 @@ public class Billing_Info_Fields  extends Test_Base {
     public void setMailing_state_country(){
         Random random = new Random();
 
-        Select country = new Select(mailingCountry);
+        Select country;
+        if (test_site.equals("oreo")){
+            country = new Select(oreo_mailingCountry);
+        }else {
+            country = new Select(mailingCountry);
+        }
         country.selectByIndex(random.nextInt(33));
 //        country.selectByValue("USA");
         driver.findElement(By.cssSelector(element.getString("paynow"))).click();
 
         try {
-            mailingstate.clear();
+            if (test_site.equals("oreo")){
+                oreo_mailingState.clear();
+            } else {
+                mailingstate.clear();
+            }
+
             driver.findElement(By.cssSelector(element.getString("paynow"))).click();
+
             try {
                 Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("mailingState_error"))).getText(), property.getString("billingState_error"));
             } catch (Throwable t){
                 Log.error("Mailing Info - State field error message is not proper: " + t.getMessage());
             }
-            mailingstate.sendKeys(property.getString("mailing_state"));
+
+            if (test_site.equals("oreo")){
+                oreo_mailingState.sendKeys(property.getString("mailing_state"));
+            } else {
+                mailingstate.sendKeys(property.getString("mailing_state"));
+            }
+
             Log.info("Tested: Mailing Info: State field, with value: " + property.getString("mailing_state"));
         } catch (Exception e){
-            Select state = new Select(mailingstate);
+            Select state;
+            if (test_site.equals("oreo")){
+                state = new Select(oreo_mailingState);
+            } else {
+                state = new Select(mailingstate);
+            }
             state.selectByIndex(1 + random.nextInt(53));
             Log.info("Tested: Mailing Info - State Field");
         }
