@@ -10,10 +10,10 @@
     <parameter name="browser_name" value="chrome" />
 
     <!--Enter the site you want to test-->
-    <parameter name="test_site" value="erie" />
+    <parameter name="test_site" value="oreo" />
 
     <!--Enter the site url, in below value-->
-    <parameter name="base_url" value="http://192.168.168.14:871/#/"/>
+    <parameter name="base_url" value="http://fp360.us:496/#/"/>
 
     <!--Enter to use as a new user or existing in the below value (value="new" / "exist")-->
     <parameter name="user" value="new"/>
@@ -40,10 +40,10 @@
     -->
 
     <parameter name="E_comm_server" value="192.168.168.14" />
-    <parameter name="E_comm_port" value="1435" />
-    <parameter name="E_comm_data_base_name" value="FPRERIEEcommLiveFeb" />
+    <parameter name="E_comm_port" value="1433" />
+    <parameter name="E_comm_data_base_name" value="FPREcommOREO" />
     <parameter name="E_comm_userName" value="sa" />
-    <parameter name="E_comm_password" value="kmit123$" />
+    <parameter name="E_comm_password" value="wr2018$" />
 
     <!--
     *
@@ -53,21 +53,21 @@
 
     <parameter name="KMWARE_server" value="192.168.168.14" />
     <parameter name="KMWARE_port" value="1435" />
-    <parameter name="KMWARE_data_base_name" value="FPRERIEKMWareLiveFeb" />
+    <parameter name="KMWARE_data_base_name" value="ORGE" />
     <parameter name="KMWARE_userName" value="sa" />
     <parameter name="KMWARE_password" value="kmit123$" />
 
     <test name="E_Comm Test">
         <!--
             Enter what to be tested in below name
-            - only for sign up: name = test.sign_up
-            - only for login : name = test.sign_in
+            - only for sign up: name = test.signup
+            - only for login : name = test.signin
             - for tickets: name = test.tickets
             - for membership: name = test.membership
         -->
         <groups>
             <run>
-                <include name="test.membership" />
+                <include name="test.signup" />
             </run>
         </groups>
 

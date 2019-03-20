@@ -30,6 +30,12 @@ public class Sign_Up_Page extends Test_Base {
             signUp.city();
             signUp.zipCode();
             signUp.password_confirmPassword();
+        } else if (test_site.equals("oreo")){
+            signUp.firstName();
+            signUp.lastName();
+            signUp.phoneNumber();
+            signUp.email();
+            signUp.password_confirmPassword();
         }
 
     }
