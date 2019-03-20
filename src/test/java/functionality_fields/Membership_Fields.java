@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.Random;
@@ -38,6 +39,23 @@ public class Membership_Fields extends Test_Base {
 
     @FindBy(css = ".counter-field")
     WebElement noOfChild;
+
+    @FindBy(id = "alaCartCountLimit")
+    WebElement careGiver;
+
+    @FindBy(name = "alaCartFirstName00")
+    WebElement careGiverFirstName1;
+
+    @FindBy(name = "alaCartLn00")
+    WebElement careGiverLastName1;
+
+    @FindBy(name = "alaCartFirstName01")
+    WebElement careGiverFirstname2;
+
+    @FindBy(name = "alaCartLn01")
+    WebElement careGiverLastName2;
+
+
 
 
 
@@ -114,8 +132,86 @@ public class Membership_Fields extends Test_Base {
     }
 
     public void extraCard(){
-        extracard.click();
-        extra_qty.sendKeys("2");
+        Random random = new Random();
+        int yes_no = random.nextInt(1);
+        if (yes_no == 1) {
+            extracard.click();
+            String noOf_extra_card = Integer.toString(random.nextInt(2));
+            extra_qty.sendKeys(noOf_extra_card);
+            Log.info("Extra Card Selected is: " + noOf_extra_card);
+        }
+    }
+
+    public void setCareGiver(){
+        Random random = new Random();
+        noOf_CareGivers = random.nextInt(2);
+        System.out.println("noOf_CareGivers: " + noOf_CareGivers);
+        Select giver = new Select(careGiver);
+        giver.selectByValue(Integer.toString(noOf_CareGivers));
+        Log.info("Tested: No of Care Giver Selected: " + noOf_CareGivers);
+
+        if (noOf_CareGivers == 1){
+            careGiverFirst();
+        } else if (noOf_CareGivers == 2){
+            careGiverFirst();
+            careGiverSecond();
+        }
+    }
+
+    public void careGiverFirst(){
+        careGiverFirstName1.clear();
+        careGiverLastName1.clear();
+
+        driver.findElement(By.cssSelector(element.getString("buynow"))).click();
+
+        try {
+            Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("careGiver_FirstName1_error"))).getText(), property.getString("MembershipFirstname_error"));
+        } catch (Throwable t){
+            Log.error("Care Giver First Name of CareGiver 1 is not match: " + t.getMessage());
+        }
+
+        try {
+            Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("careGiver_LastName1_error"))).getText(), property.getString("MembershipLastname_error"));
+        } catch (Throwable t){
+            Log.error("Care Giver Last Name of CareGiver 1 is not match: " + t.getMessage());
+        }
+
+        careGiverFirstName1.clear();
+        careGiverFirstName1.sendKeys(property.getString("careGiver_FirstName1"));
+        Log.info("Tested: Care Giver First Name of CareGiver 1 with value: " + property.getString("careGiver_FirstName1"));
+
+        careGiverLastName1.clear();
+        careGiverLastName1.sendKeys(property.getString("careGiver_LastName1"));
+
+        Log.info("Tested: Care Giver Last Name of CareGiver 1 with value: " + property.getString("careGiver_LastName1"));
+    }
+
+    public void careGiverSecond(){
+        careGiverFirstname2.clear();
+        careGiverLastName2.clear();
+        driver.findElement(By.cssSelector(element.getString("buynow"))).click();
+
+        try {
+            Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("careGiver_FirstName2_error"))).getText(), property.getString("MembershipFirstname_error"));
+        } catch (Throwable t){
+            Log.error("Care Giver First Name of CareGiver 2 is not match: " + t.getMessage());
+        }
+
+        try {
+            Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("careGiver_LastName2_error"))).getText(), property.getString("MembershipLastname_error"));
+        } catch (Throwable t){
+            Log.error("Care Giver Last Name of CareGiver 2 is not match: " + t.getMessage());
+        }
+
+        careGiverFirstname2.clear();
+        careGiverFirstName1.sendKeys(property.getString("careGiver_FirstName2"));
+        Log.info("Tested: Care Giver First Name of CareGiver 2 with value: " + property.getString("careGiver_FirstName2"));
+
+        careGiverLastName2.clear();
+        careGiverLastName2.sendKeys(property.getString("careGiver_LastName2"));
+        Log.info("Tested: Care Giver First Name of CareGiver 2 with value: " + property.getString("careGiver_LastName2"));
+
+        driver.findElement(By.cssSelector(element.getString("buynow"))).click();
     }
 
 }

@@ -22,6 +22,7 @@ import java.util.Random;
 public class Membership_Function extends Test_Base {
 
     private List<String> erie_memberhips;
+    private List<String> oreo_membership;
 //    private String get_membership;
 
     public void select_membership(String membership) throws Exception{
@@ -77,6 +78,25 @@ public class Membership_Function extends Test_Base {
                 }
             }
 
+            if (test_site.equals("oreo")){
+                Log.info("Test: OREO Membership");
+
+                passTypeCode=  oreo_membership_list();
+
+                if ((membership.toLowerCase()).equals("new")){
+                    driver.navigate().to(base_url + "Membership/New/" + passTypeCode);
+                    Log.info("Selected NEW Membership to test: " + passTypeCode);
+                    Log.info("Page Navigated to: " + driver.getCurrentUrl());
+
+                    if (passTypeCode.equals("Individual")){
+                        membership_pages.OREO.Individual individual = new membership_pages.OREO.Individual();
+                        individual.individual_new();
+                    }
+
+                    driver.findElement(By.cssSelector(element.getString("buynow"))).click();
+                }
+            }
+
             Shopping_Cart_Functions shopping_cart_functions = new Shopping_Cart_Functions(driver);
             shopping_cart_functions.shoppingCart(passTypeCode);
         }
@@ -99,5 +119,15 @@ public class Membership_Function extends Test_Base {
 
         int test_member = random.nextInt(erie_memberhips.size());
         return erie_memberhips.get(test_member);
+    }
+
+    String oreo_membership_list(){
+        Random random = new Random();
+
+        oreo_membership = new ArrayList<>();
+        oreo_membership.add("Individual");
+
+        int test_member = random.nextInt(oreo_membership.size());
+        return oreo_membership.get(test_member);
     }
 }

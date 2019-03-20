@@ -67,7 +67,7 @@
         -->
         <groups>
             <run>
-                <include name="test.signin" />
+                <include name="test.membership" />
             </run>
         </groups>
 
