@@ -19,8 +19,8 @@
     <parameter name="user" value="new"/>
 
     <!--Enter user name and password if above user value=exist-->
-    <parameter name="userName" value="sanjaim@kmitsolutions.com"/>
-    <parameter name="password" value="123456"/>
+    <parameter name="userName" value="2019Mar20_13_37_52automatedemail@kmitsolutions.com"/>
+    <parameter name="password" value="test123456"/>
 
     <!--Enter only for membership testing, value = "new",  value = "gift" or value = "renew" (give exact value given here)-->
     <parameter name="membership" value="new" />
@@ -67,7 +67,7 @@
         -->
         <groups>
             <run>
-                <include name="test.signup" />
+                <include name="test.signin" />
             </run>
         </groups>
 

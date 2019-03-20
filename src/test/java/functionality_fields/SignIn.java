@@ -59,8 +59,8 @@ public class SignIn extends Test_Base {
         password.clear();
 
 //        for invalid password
-        user_name.sendKeys("sanjaim@kmitsolutions.com");
-        password.sendKeys("12587865");
+        user_name.sendKeys(exist_user);
+        password.sendKeys("wrongpasswords");
 
         driver.findElement(By.cssSelector(element.getString("login_btn"))).click();
 
