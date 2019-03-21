@@ -1,6 +1,10 @@
 package functionality_fields;
 
 import base_test.Test_Base;
+import membership_pages.OREO.Dual;
+import membership_pages.OREO.FamilyDeluxe;
+import membership_pages.OREO.ZooDirectorsClub;
+import membership_pages.OREO.ZooKeepersClub;
 import membership_pages.erie.Family;
 import membership_pages.erie.FamilyPlus;
 import membership_pages.erie.GrandParentPlus;
@@ -91,6 +95,21 @@ public class Membership_Function extends Test_Base {
                     if (passTypeCode.equals("Individual")){
                         membership_pages.OREO.Individual individual = new membership_pages.OREO.Individual();
                         individual.individual_new();
+                    } else if (passTypeCode.equals("Dual")){
+                        Dual dual = new Dual();
+                        dual.dual_new();
+                    } else if(passTypeCode.equals("Family")){
+                        Family family = new Family();
+                        family.family_new();
+                    } else if (passTypeCode.equals("FamilyDeluxe")){
+                        FamilyDeluxe familyDeluxe = new FamilyDeluxe();
+                        familyDeluxe.familyDeluxe_new();
+                    } else if (passTypeCode.equals("ZooDirectorsClub")){
+                        ZooDirectorsClub zooDirectorsClub = new ZooDirectorsClub();
+                        zooDirectorsClub.zooDirectorsClub_new();
+                    } else if (passTypeCode.equals("ZooKeepersClub")){
+                        ZooKeepersClub zooKeepersClub = new ZooKeepersClub();
+                        zooKeepersClub.zooKeepersClub_new();
                     }
 
                     driver.findElement(By.cssSelector(element.getString("buynow"))).click();
@@ -126,6 +145,11 @@ public class Membership_Function extends Test_Base {
 
         oreo_membership = new ArrayList<>();
         oreo_membership.add("Individual");
+        oreo_membership.add("Dual");
+        oreo_membership.add("Family");
+        oreo_membership.add("FamilyDeluxe");
+        oreo_membership.add("ZooDirectorsClub");
+        oreo_membership.add("ZooKeepersClub");
 
         int test_member = random.nextInt(oreo_membership.size());
         return oreo_membership.get(test_member);
