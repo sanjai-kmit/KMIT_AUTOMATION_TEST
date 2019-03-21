@@ -6,6 +6,7 @@ import functionality_fields.Shopping_Cart_Functions;
 import functionality_fields.SignIn;
 import org.testng.annotations.Test;
 import test_DB.E_Comm_DataBase;
+import tests.Donation;
 import tests.Membership_Test;
 import tests.Sign_In_Page;
 import tests.Sign_Up_Page;
@@ -48,5 +49,11 @@ public class Main_Test extends Test_Base{
 
         Membership_Test membership_test = new Membership_Test();
         membership_test.membership(membership);
+    }
+
+    @Test(groups = "test.donation")
+    public void test_Donation()throws Exception{
+        Donation donation = new Donation();
+        donation.donation();
     }
 }

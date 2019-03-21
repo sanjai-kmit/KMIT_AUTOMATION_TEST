@@ -15,10 +15,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -48,6 +45,8 @@ public class Test_Base extends DataBase_Connection{
 
     public static ResourceBundle element;
     public static ResourceBundle property;
+
+    public static Random random = new Random();
 
     public static Logger Log = Logger.getLogger(Test_Base.class.getName());
 

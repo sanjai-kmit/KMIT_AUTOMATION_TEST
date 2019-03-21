@@ -117,7 +117,7 @@ public class Membership_Function extends Test_Base {
             }
 
             Shopping_Cart_Functions shopping_cart_functions = new Shopping_Cart_Functions(driver);
-            shopping_cart_functions.shoppingCart(passTypeCode);
+            shopping_cart_functions.shoppingCart();
         }
     }
 
