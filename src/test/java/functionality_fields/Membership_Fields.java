@@ -55,15 +55,10 @@ public class Membership_Fields extends Test_Base {
     @FindBy(name = "alaCartLn01")
     WebElement careGiverLastName2;
 
-
-
-
-
     public Membership_Fields(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
 
     public void primaryMemberName()throws Exception{
         Thread.sleep(1000);
@@ -102,13 +97,13 @@ public class Membership_Fields extends Test_Base {
         try {
             Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("secondaryFirstname_error"))).getText().toLowerCase(), property.getString("MembershipFirstname_error").toLowerCase());
         }catch (Throwable t){
-            Log.error("Secondary First Name field validation message not proper on empty field" + t.getMessage());
+            Log.error("Secondary First Name field validation message not proper on empty field: " + t.getMessage());
         }
 
         try {
             Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("secondaryLastname_error"))).getText().toLowerCase(), property.getString("MembershipLastname_error").toLowerCase());
         }catch (Throwable t){
-            Log.error("Secondary Last Name field validation message not proper on empty field" + t.getMessage());
+            Log.error("Secondary Last Name field validation message not proper on empty field: " + t.getMessage());
         }
 
         secondaryFirstName.clear();

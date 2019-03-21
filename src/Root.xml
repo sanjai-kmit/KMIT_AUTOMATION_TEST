@@ -16,7 +16,7 @@
     <parameter name="base_url" value="http://fp360.us:496/#/"/>
 
     <!--Enter to use as a new user or existing in the below value (value="new" / "exist")-->
-    <parameter name="user" value="new"/>
+    <parameter name="user" value="exist"/>
 
     <!--Enter user name and password if above user value=exist-->
     <parameter name="userName" value="2019Mar20_13_37_52automatedemail@kmitsolutions.com"/>
@@ -64,10 +64,11 @@
             - only for login : name = test.signin
             - for tickets: name = test.tickets
             - for membership: name = test.membership
+            - for donation: name = test.donation
         -->
         <groups>
             <run>
-                <include name="test.membership" />
+                <include name="test.donation" />
             </run>
         </groups>
 

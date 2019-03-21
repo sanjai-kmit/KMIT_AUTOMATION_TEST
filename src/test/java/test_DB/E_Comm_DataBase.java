@@ -99,6 +99,7 @@ public class E_Comm_DataBase extends Test_Base {
 
         try {
             resultSet = statement.executeQuery(qry_select);
+
             while (resultSet.next()){
                 customerTypeCode = resultSet.getString("CustomerTypeCode");
             }
