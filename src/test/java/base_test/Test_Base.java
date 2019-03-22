@@ -3,6 +3,8 @@ package base_test;
 import data_base.DataBase_Connection;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,6 +14,8 @@ import org.testng.annotations.*;
 import util.Email_Config;
 import util.Screen_Shot;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -55,32 +59,47 @@ public class Test_Base extends DataBase_Connection{
     public static WebDriverWait wait;
     public static List<String> site_with_timeStamp = new ArrayList<>();
 
-    @Parameters({"browser_name", "test_site", "base_url",
-            "E_comm_server", "E_comm_port", "E_comm_data_base_name", "E_comm_userName", "E_comm_password",
-            "KMWARE_server", "KMWARE_port", "KMWARE_data_base_name", "KMWARE_userName", "KMWARE_password",
-            "user", "userName"})
+    public static FileInputStream file;
+    public static XSSFWorkbook workbook;
+    public static XSSFSheet sheet;
+
+    @Parameters({"userName"})
     @BeforeSuite(alwaysRun = true)
-    public void open_driver(String browser_name, String test_site, String base_url,
-                            String E_comm_server, String E_comm_port, String E_comm_data_base_name, String E_comm_userName, String E_comm_password,
-                            String KMWARE_server, String KMWARE_port, String KMWARE_data_base_name, String KMWARE_userName, String KMWARE_password,
-                            String user, String userName){
+    public void open_driver(String userName){
 
         DOMConfigurator.configure("src\\log4j.xml");
 
-        dataBase_connection.eComm_DB_Connection(E_comm_server, E_comm_port, E_comm_data_base_name, E_comm_userName, E_comm_password);
-        dataBase_connection.kmware_DB_Connection(KMWARE_server, KMWARE_port, KMWARE_data_base_name, KMWARE_userName, KMWARE_password);
+        dataBase_connection.eComm_DB_Connection();
+        dataBase_connection.kmware_DB_Connection();
+
+
+
+        try {
+            file = new FileInputStream(new File("src\\test\\java\\Utils\\TestData.xlsx").getAbsolutePath());
+        }catch (FileNotFoundException e){
+            Log.error("Exception on TestData File: " + e.getMessage());
+        }
+
+        try {
+            workbook = new XSSFWorkbook(file);
+        } catch (Exception e){
+            Log.error("Exception on WorkBook: " + e.getMessage());
+        }
+
+        sheet = workbook.getSheet("REQUIREMENTS");
+
+        base_url = sheet.getRow(3).getCell(1).toString();
+        test_site = sheet.getRow(2).getCell(1).toString();
+        this.user = sheet.getRow(4).getCell(1).toString();
+        emailId = email_id() + "automatedemail@kmitsolutions.com";
+        exist_user = sheet.getRow(5).getCell(1).toString();
 
         element = ResourceBundle.getBundle(test_site.toUpperCase() + "\\" + test_site.toLowerCase() + "_elements");
         property = ResourceBundle.getBundle(test_site.toUpperCase() + "\\" + test_site.toLowerCase() + "_property");
 
-        this.base_url = base_url;
-        this.test_site = test_site.toLowerCase();
-        emailId = email_id() + "automatedemail@kmitsolutions.com";
-        exist_user = userName;
-        this.user = user;
         joinDate = getJoinDate();
 
-        select_browser(browser_name);
+        select_browser(sheet.getRow(1).getCell(1).toString());
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         Log.info("Driver successfully got open");
 

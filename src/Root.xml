@@ -7,16 +7,16 @@
             * chrome
             * firefox
     -->
-    <parameter name="browser_name" value="chrome" />
+    <!--<parameter name="browser_name" value="chrome" />
 
-    <!--Enter the site you want to test-->
+    &lt;!&ndash;Enter the site you want to test&ndash;&gt;
     <parameter name="test_site" value="oreo" />
 
-    <!--Enter the site url, in below value-->
+    &lt;!&ndash;Enter the site url, in below value&ndash;&gt;
     <parameter name="base_url" value="http://fp360.us:496/#/"/>
 
-    <!--Enter to use as a new user or existing in the below value (value="new" / "exist")-->
-    <parameter name="user" value="exist"/>
+    &lt;!&ndash;Enter to use as a new user or existing in the below value (value="new" / "exist")&ndash;&gt;
+    <parameter name="user" value="exist"/>-->
 
     <!--Enter user name and password if above user value=exist-->
     <parameter name="userName" value="2019Mar20_13_37_52automatedemail@kmitsolutions.com"/>
@@ -39,11 +39,11 @@
     *
     -->
 
-    <parameter name="E_comm_server" value="192.168.168.14" />
+    <!--<parameter name="E_comm_server" value="192.168.168.14" />
     <parameter name="E_comm_port" value="1433" />
     <parameter name="E_comm_data_base_name" value="FPREcommOREO" />
     <parameter name="E_comm_userName" value="sa" />
-    <parameter name="E_comm_password" value="wr2018$" />
+    <parameter name="E_comm_password" value="wr2018$" />-->
 
     <!--
     *
@@ -51,11 +51,11 @@
     *
     -->
 
-    <parameter name="KMWARE_server" value="192.168.168.14" />
+    <!--<parameter name="KMWARE_server" value="192.168.168.14" />
     <parameter name="KMWARE_port" value="1435" />
     <parameter name="KMWARE_data_base_name" value="ORGE" />
     <parameter name="KMWARE_userName" value="sa" />
-    <parameter name="KMWARE_password" value="kmit123$" />
+    <parameter name="KMWARE_password" value="kmit123$" />-->
 
     <test name="E_Comm Test">
         <!--
@@ -68,7 +68,7 @@
         -->
         <groups>
             <run>
-                <include name="test.donation" />
+                <include name="test.signup" />
             </run>
         </groups>
 
