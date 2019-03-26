@@ -28,9 +28,10 @@ public class SignIn extends Test_Base {
     public SignIn(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        sheet = workbook.getSheet("SIGNIN");
     }
 
-    public void login_validation(String userName, String userPassword) throws Exception{
+    public void login_validation() throws Exception{
 
 //        for empty user name and password field
         try {
@@ -90,12 +91,12 @@ public class SignIn extends Test_Base {
         }
 
         user_name.clear();
-        user_name.sendKeys(userName);
-        Log.info("Tested: User Name field - given value is: " + userName);
+        user_name.sendKeys(sheet.getRow(1).getCell(1).toString());
+        Log.info("Tested: User Name field - given value is: " + sheet.getRow(1).getCell(1).toString());
 
         password.clear();
-        password.sendKeys(userPassword);
-        Log.info("Tested: Password Field - given value is: " + userPassword);
+        password.sendKeys(sheet.getRow(2).getCell(1).toString().trim().replace(".0", ""));
+        Log.info("Tested: Password Field - given value is: " + sheet.getRow(2).getCell(1).toString().trim().replace(".0", ""));
 
         driver.findElement(By.cssSelector(element.getString("login_btn"))).click();
 
