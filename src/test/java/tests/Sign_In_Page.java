@@ -12,13 +12,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class Sign_In_Page extends Test_Base {
 
-    public void signin(String userName, String password) throws Exception{
+    public void signin() throws Exception{
         driver.navigate().to(base_url + element.getString("signin"));
         Log.info("Navigated: to signin page: " + driver.getCurrentUrl());
 
 //        Sign up field functionality
         SignIn signIn = new SignIn(driver);
-        signIn.login_validation(userName, password);
+        signIn.login_validation();
 
         Log.info("Tested: Sign In page functionality");
     }
