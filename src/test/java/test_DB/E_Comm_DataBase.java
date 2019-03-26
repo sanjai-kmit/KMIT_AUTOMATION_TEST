@@ -23,14 +23,14 @@ public class E_Comm_DataBase extends Test_Base {
             resultSet = statement.executeQuery(qry_select);
             while (resultSet.next()){
                 try {
-                    Assert.assertEquals(resultSet.getString("FirstName"), property.getString("firstName"));
+                    Assert.assertEquals(resultSet.getString("FirstName"), sheet.getRow(1).getCell(1).toString());
                     Log.info("Data Base: FirstName -  Tested" );
                 } catch (Throwable t){
                     Log.error("Data Base Exception on FirstName - with exception: " + t.getMessage());
                 }
 
                 try {
-                    Assert.assertEquals(resultSet.getString("LastName"), property.getString("lastName"));
+                    Assert.assertEquals(resultSet.getString("LastName"), sheet.getRow(2).getCell(1).toString());
                     Log.info("Data Base: LastName -  Tested" );
                 } catch (Throwable t){
                     Log.error("Data Base Exception on LastName: with exception: " + t.getMessage());
@@ -52,28 +52,28 @@ public class E_Comm_DataBase extends Test_Base {
                 }
 
                 try {
-                    Assert.assertEquals(resultSet.getString("PhoneNumber"), property.getString("phoneNumber"));
+                    Assert.assertEquals(resultSet.getString("PhoneNumber"), sheet.getRow(3).getCell(1).toString());
                     Log.info("Data Base: PhoneNumber - Tested");
                 } catch (Throwable t){
                     Log.error("Data Base Exception on PhoneNumber: with exception: " + t.getMessage());
                 }
 
                 try {
-                    Assert.assertEquals(resultSet.getString("Address1"), property.getString("addressLine_1"));
+                    Assert.assertEquals(resultSet.getString("Address1"), sheet.getRow(4).getCell(1).toString());
                     Log.info("Data Base: Address1 - Tested");
                 } catch (Throwable t){
                     Log.error("Data Base Exception on Address1: with exception: " + t.getMessage());
                 }
 
                 try {
-                    Assert.assertEquals(resultSet.getString("City"), property.getString("city"));
+                    Assert.assertEquals(resultSet.getString("City"), sheet.getRow(5).getCell(1).toString());
                     Log.info("Data Base: City - Tested");
                 } catch (Throwable t){
                     Log.error("Data Base Exception on City: with exception: " + t.getMessage());
                 }
 
                 try {
-                    Assert.assertEquals(resultSet.getString("PostalZipCode"), property.getString("zipcode"));
+                    Assert.assertEquals(resultSet.getString("PostalZipCode"), sheet.getRow(7).getCell(1).toString());
                     Log.info("Data Base: PostalZipCode - Tested");
                 } catch (Throwable t){
                     Log.error("Data Base Exception on PostalZipCode: with exception: " + t.getMessage());
@@ -88,12 +88,12 @@ public class E_Comm_DataBase extends Test_Base {
 
     public String customerTypeCode(){
         String qry_select = null;
-        if (user.equals("new")){
+        if (user.equals("New")){
             qry_select = "SELECT * FROM AspNetUsers WHERE UserName = '" + emailId + "'";
-        } else if (user.equals("exist")){
+        } else if (user.equals("Exist")){
             qry_select = "SELECT * FROM AspNetUsers WHERE UserName = '" + exist_user + "'";
         }
-//        Log.info("Data Base Querys: " + qry_select);
+        Log.info("Data Base Querys: " + qry_select);
 
         String customerTypeCode = null;
 

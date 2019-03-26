@@ -37,14 +37,15 @@ public class Main_Test extends Test_Base{
         signInPage.signin(userName, password);
     }
 
-    @Test(groups = "test.membership", parameters = {"userName", "password", "user", "membership"})
-    public void test_Membership(String userName, String password, String user, String membership)throws Exception{
+    @Test(groups = "test.membership", parameters = {"membership"})
+    public void test_Membership( String membership)throws Exception{
 
         if (user.equals("new")){
             test_SignUp();
             test_aspNetUsers();
         } else if (user.equals("exist")){
-            test_SignIn(userName, password);
+            sheet = workbook.getSheet("SIGNUP");
+            test_SignIn(sheet.getRow(1).getCell(1).toString(), sheet.getRow(2).getCell(1).toString());
         }
 
         Membership_Test membership_test = new Membership_Test();

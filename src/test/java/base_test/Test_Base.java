@@ -63,9 +63,8 @@ public class Test_Base extends DataBase_Connection{
     public static XSSFWorkbook workbook;
     public static XSSFSheet sheet;
 
-    @Parameters({"userName"})
     @BeforeSuite(alwaysRun = true)
-    public void open_driver(String userName){
+    public void open_driver(){
 
         DOMConfigurator.configure("src\\log4j.xml");
 
@@ -90,7 +89,7 @@ public class Test_Base extends DataBase_Connection{
 
         base_url = sheet.getRow(3).getCell(1).toString();
         test_site = sheet.getRow(2).getCell(1).toString();
-        this.user = sheet.getRow(4).getCell(1).toString();
+        user = sheet.getRow(4).getCell(1).toString();
         emailId = email_id() + "automatedemail@kmitsolutions.com";
         exist_user = sheet.getRow(5).getCell(1).toString();
 
@@ -161,7 +160,7 @@ public class Test_Base extends DataBase_Connection{
 
         SimpleDateFormat format;
 
-        site_with_timeStamp.add("oreo");
+        site_with_timeStamp.add("OREO");
 
         if (site_with_timeStamp.contains(test_site)){
             format = new SimpleDateFormat("yyyy-MM-dd HH:mm");

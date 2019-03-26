@@ -55,6 +55,7 @@ public class SignUp extends Test_Base {
     public SignUp(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        sheet = workbook.getSheet("SIGNUP");
     }
 
     public void firstName() throws Exception{
@@ -69,10 +70,13 @@ public class SignUp extends Test_Base {
         }catch (Throwable t){
             Log.error("First Name Error message is not proper on Empty data: " + t.getMessage());
         }
-        firstName.clear();
-        firstName.sendKeys(property.getString("firstName"));
 
-        Log.info("Tested signup page: First Name field - given value is: " + property.getString("firstName"));
+        String first_name = sheet.getRow(1).getCell(1).toString();
+
+        firstName.clear();
+        firstName.sendKeys(first_name);
+
+        Log.info("Tested signup page: First Name field - given value is: " + first_name);
     }
 
     //    for lastname
@@ -87,10 +91,12 @@ public class SignUp extends Test_Base {
         }catch (Throwable t){
             Log.error("Last Name Error message is not proper on Empty data: " + t.getMessage());
         }
-        lastName.clear();
-        lastName.sendKeys(property.getString("lastName"));
 
-        Log.info("Tested signup page: Last Name field - given value is: " + property.getString("lastName"));
+        String last_name = sheet.getRow(2).getCell(1).toString();
+        lastName.clear();
+        lastName.sendKeys(last_name);
+
+        Log.info("Tested signup page: Last Name field - given value is: " + last_name);
     }
 
 
@@ -106,10 +112,11 @@ public class SignUp extends Test_Base {
         }catch (Throwable t){
             Log.error("Phone Number Error message is not proper on Invalid data: " + t.getMessage());
         }
+        String phone_number = sheet.getRow(3).getCell(1).toString();
         phoneNumber.clear();
-        phoneNumber.sendKeys(property.getString("phoneNumber"));
+        phoneNumber.sendKeys(phone_number);
 
-        Log.info("Tested signup page: Phone Number field - given value is: " + property.getString("phoneNumber"));
+        Log.info("Tested signup page: Phone Number field - given value is: " + phone_number);
     }
 
 
@@ -140,18 +147,20 @@ public class SignUp extends Test_Base {
 
     //    for address
     public void address(){
+        String address_line_1 = sheet.getRow(4).getCell(1).toString();
         address.clear();
-        address.sendKeys(property.getString("addressLine_1"));
+        address.sendKeys(address_line_1);
 
-        Log.info("Tested signup page: Address field - given value is: " + property.getString("addressLine_1"));
+        Log.info("Tested signup page: Address field - given value is: " + address_line_1);
     }
 
     //    for city
     public void city(){
-        city.clear();
-        city.sendKeys(property.getString("city"));
 
-        Log.info("Tested signup page: City field - given value is: " + property.getString("city"));
+        city.clear();
+        city.sendKeys(sheet.getRow(5).getCell(1).toString());
+
+        Log.info("Tested signup page: City field - given value is: " + sheet.getRow(5).getCell(1).toString());
     }
 
     //    for zipcode
@@ -166,9 +175,9 @@ public class SignUp extends Test_Base {
             Log.error("ZipCode Field Error message is not proper on Invalid data: " + t.getMessage());
         }
         zipcode.clear();
-        zipcode.sendKeys(property.getString("zipcode"));
+        zipcode.sendKeys(sheet.getRow(7).getCell(1).toString());
 
-        Log.info("Tested signup page: Zipcode field - given value is: " + property.getString("zipcode"));
+        Log.info("Tested signup page: Zipcode field - given value is: " + sheet.getRow(7).getCell(1).toString());
     }
 
 
@@ -181,6 +190,7 @@ public class SignUp extends Test_Base {
         WebElement createBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(element.getString("create_btn"))));
 //        driver.findElement(By.cssSelector(element.getString("create_btn"))).click();
         createBtn.click();
+
 
         try {
             Assert.assertEquals(driver.findElement(By.cssSelector(element.getString("password_error"))).getText().toLowerCase(), property.getString("password_error").toLowerCase());
@@ -231,11 +241,11 @@ public class SignUp extends Test_Base {
         password.clear();
         confirmPassword.clear();
 
-        password.sendKeys(property.getString("password"));
-        Log.info("Tested signup page: Password field - given value is: " + property.getString("password"));
+        password.sendKeys(sheet.getRow(8).getCell(1).toString());
+        Log.info("Tested signup page: Password field - given value is: " + sheet.getRow(8).getCell(1).toString());
 
-        confirmPassword.sendKeys(property.getString("confirmPassword"));
-        Log.info("Tested signup page: Confirm Password field - given value is: " + property.getString("confirmPassword"));
+        confirmPassword.sendKeys(sheet.getRow(9).getCell(1).toString());
+        Log.info("Tested signup page: Confirm Password field - given value is: " + sheet.getRow(9).getCell(1).toString());
 
         driver.findElement(By.cssSelector(element.getString("create_btn"))).click();
 

@@ -21,7 +21,7 @@ public class Sign_Up_Page extends Test_Base {
         SignUp signUp = new SignUp(driver);
 
         Log.info("Test Fields: Signup fields");
-        if (test_site.equals("erie")){
+        if (test_site.equals("ERIE")){
             signUp.firstName();
             signUp.lastName();
             signUp.phoneNumber();
@@ -30,7 +30,7 @@ public class Sign_Up_Page extends Test_Base {
             signUp.city();
             signUp.zipCode();
             signUp.password_confirmPassword();
-        } else if (test_site.equals("oreo")){
+        } else if (test_site.equals("OREO")){
             signUp.firstName();
             signUp.lastName();
             signUp.phoneNumber();
