@@ -36,7 +36,7 @@ public class Membership_Function extends Test_Base {
         if (e_comm_dataBase.customerTypeCode().equals("Member")){
             Log.info("The User: " + exist_user + " is already a Member. You are able to renew your current Membership.");
         } else if (e_comm_dataBase.customerTypeCode().equals("RegularCustomers")) {
-            if (test_site.equals("erie")){
+            if (test_site.equals("ERIE")){
                 Log.info("Test: ERIE Membership");
 
                 passTypeCode = erie_membership_list();
@@ -82,7 +82,7 @@ public class Membership_Function extends Test_Base {
                 }
             }
 
-            if (test_site.equals("oreo")){
+            if (test_site.equals("OREO")){
                 Log.info("Test: OREO Membership");
 
                 passTypeCode=  oreo_membership_list();

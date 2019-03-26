@@ -58,6 +58,7 @@ public class Membership_Fields extends Test_Base {
     public Membership_Fields(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        sheet = workbook.getSheet("MEMBERSHIP");
     }
 
     public void primaryMemberName()throws Exception{
@@ -80,12 +81,14 @@ public class Membership_Fields extends Test_Base {
         }
 
         primaryLastName.clear();
-        primaryFirstName.sendKeys(property.getString("primaryFirstName"));
-        Log.info("Tested - Primary First Name with value: " + property.getString("primaryFirstName"));
+        String firstName = sheet.getRow(1).getCell(1).toString();
+        primaryFirstName.sendKeys(firstName);
+        Log.info("Tested - Primary First Name with value: " + firstName);
 
         primaryLastName.clear();
-        primaryLastName.sendKeys(property.getString("primaryLastname"));
-        Log.info("Tested - Primary Last Name with value: " + property.getString("primaryLastname"));
+        String lastName = sheet.getRow(2).getCell(1).toString();
+        primaryLastName.sendKeys(lastName);
+        Log.info("Tested - Primary Last Name with value: " + lastName);
     }
 
     public void secondaryMemberName(){
@@ -107,12 +110,14 @@ public class Membership_Fields extends Test_Base {
         }
 
         secondaryFirstName.clear();
-        secondaryFirstName.sendKeys(property.getString("secondaryFirstName"));
-        Log.info("Tested - Secondary First Name with value: " + property.getString("secondaryFirstName"));
+        String firstName = sheet.getRow(3).getCell(1).toString();
+        secondaryFirstName.sendKeys(firstName);
+        Log.info("Tested - Secondary First Name with value: " + firstName);
 
         secondaryLastName.clear();
-        secondaryLastName.sendKeys(property.getString("secondaryLastName"));
-        Log.info("Tested - Secondary Last Name with value: " + property.getString("secondaryLastName"));
+        String lastName = sheet.getRow(4).getCell(1).toString();
+        secondaryLastName.sendKeys(lastName);
+        Log.info("Tested - Secondary Last Name with value: " + lastName);
     }
 
     public void childCount(){
