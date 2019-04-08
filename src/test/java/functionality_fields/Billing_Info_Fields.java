@@ -212,7 +212,7 @@ public class Billing_Info_Fields  extends Test_Base {
         Random random = new Random();
 
         Select country;
-        if (test_site.equals("oreo")){
+        if (test_site.equals("OREO")){
             country = new Select(oreo_billingCountry);
         } else {
              country = new Select(billingcountry);
@@ -222,7 +222,7 @@ public class Billing_Info_Fields  extends Test_Base {
         driver.findElement(By.cssSelector(element.getString("paynow"))).click();
 
         try {
-            if (test_site.equals("oreo")){
+            if (test_site.equals("OREO")){
                 oreo_billingState.clear();
             }else {
                 billingstate.clear();
@@ -234,7 +234,7 @@ public class Billing_Info_Fields  extends Test_Base {
             } catch (Throwable t){
                 Log.error("Billing Info - State field error message is not proper: " + t.getMessage());
             }
-            if (test_site.equals("oreo")){
+            if (test_site.equals("OREO")){
                 oreo_billingState.sendKeys(property.getString("billing_state"));
             } else {
                 billingstate.sendKeys(property.getString("billing_state"));
@@ -243,7 +243,7 @@ public class Billing_Info_Fields  extends Test_Base {
             Log.info("Tested: Billing Info: State field, with value: " + property.getString("billing_state"));
         } catch (Exception e){
             Select state;
-            if (test_site.equals("oreo")){
+            if (test_site.equals("OREO")){
                 state = new Select(oreo_billingState);
             } else {
                 state = new Select(billingstate);
@@ -258,7 +258,7 @@ public class Billing_Info_Fields  extends Test_Base {
         Random random = new Random();
 
         Select country;
-        if (test_site.equals("oreo")){
+        if (test_site.equals("OREO")){
             country = new Select(oreo_mailingCountry);
         }else {
             country = new Select(mailingCountry);
@@ -268,7 +268,7 @@ public class Billing_Info_Fields  extends Test_Base {
         driver.findElement(By.cssSelector(element.getString("paynow"))).click();
 
         try {
-            if (test_site.equals("oreo")){
+            if (test_site.equals("OREO")){
                 oreo_mailingState.clear();
             } else {
                 mailingstate.clear();
@@ -282,7 +282,7 @@ public class Billing_Info_Fields  extends Test_Base {
                 Log.error("Mailing Info - State field error message is not proper: " + t.getMessage());
             }
 
-            if (test_site.equals("oreo")){
+            if (test_site.equals("OREO")){
                 oreo_mailingState.sendKeys(property.getString("mailing_state"));
             } else {
                 mailingstate.sendKeys(property.getString("mailing_state"));
@@ -291,7 +291,7 @@ public class Billing_Info_Fields  extends Test_Base {
             Log.info("Tested: Mailing Info: State field, with value: " + property.getString("mailing_state"));
         } catch (Exception e){
             Select state;
-            if (test_site.equals("oreo")){
+            if (test_site.equals("OREO")){
                 state = new Select(oreo_mailingState);
             } else {
                 state = new Select(mailingstate);
