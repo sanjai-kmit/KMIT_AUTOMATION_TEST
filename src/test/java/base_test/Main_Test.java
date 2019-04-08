@@ -40,10 +40,10 @@ public class Main_Test extends Test_Base{
     @Test(groups = "test.membership", parameters = {"membership"})
     public void test_Membership( String membership)throws Exception{
 
-        if (user.equals("new")){
+        if (user.equals("New")){
             test_SignUp();
             test_aspNetUsers();
-        } else if (user.equals("exist")){
+        } else if (user.equals("Exist")){
             test_SignIn();
         }
 
